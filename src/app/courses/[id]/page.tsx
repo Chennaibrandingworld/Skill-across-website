@@ -320,12 +320,11 @@ export default function CourseDetailPage() {
       <Header />
 
       {/* Hero section */}
-      <section
-        className="relative w-full py-14 md:py-20"
-        style={{
-          background: "linear-gradient(120deg,#7928ca 0%,#ff0080 100%)",
-          backgroundPosition: "center",
-        }}
+     <section className="relative w-full py-8 md:py-12"
+  style={{
+    background: "linear-gradient(120deg,#7928ca 0%,#ff0080 100%)",
+    backgroundPosition: "center",
+  }}
       >
         <div className="absolute inset-0 pointer-events-none z-0">
           <svg
@@ -359,8 +358,35 @@ export default function CourseDetailPage() {
             <span className="font-semibold">{course.title}</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            {course.title}
-          </h1>
+  {course.title}
+</h1>
+
+
+           {/* About Section */}
+        <section className="mb-12">
+          {/* <h2 className="text-2xl md:text-3xl font-bold mb-5">
+            About {course.title}
+          </h2> */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <p className="text-lg leading-relaxed text-white">
+  {course.about?.description}
+</p>
+
+
+
+            {course.about?.image && (
+              <Image
+                src={course.about.image}
+                alt="About course"
+                width={600}
+                height={400}
+                className="rounded-lg w-full shadow-md"
+                decoding="async"
+              />
+            )}
+            
+          </div>
+        </section>
           {/* <p className="mb-8 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
             {course.description}
           </p> */}
@@ -400,7 +426,7 @@ export default function CourseDetailPage() {
       {/* Rest of your course page content remains the same */}
       <main className="max-w-6xl mx-auto px-4 md:px-10 py-12">
         {/* About Section */}
-        <section className="mb-12">
+        {/* <section className="mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-5">
             About {course.title}
           </h2>
@@ -419,7 +445,9 @@ export default function CourseDetailPage() {
               {course.about?.description}
             </p>
           </div>
-        </section>
+        </section> */}
+
+        
 
         {/* Benefits Section */}
         <section className="py-8 mb-12">
@@ -533,7 +561,109 @@ export default function CourseDetailPage() {
             </div>
           </div>
         </section>
-        {/* Certificate Section with White Background */}
+
+         
+
+        
+
+        <section className="mb-12 grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Skills You Will Learn</h2>
+            <ul className="list-disc ml-6 text-base space-y-1">
+              {course.skills?.map(({ id, skill_name }) => (
+                <li key={id}>{skill_name}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Global Certification</h2>
+            <div className="flex flex-wrap gap-7">
+              {course.tools?.map(({ id, tool_name, tool_link }) => (
+                <div key={id} className="flex flex-col items-center w-24">
+                  {/* Clickable Tool Name that redirects to tool_link */}
+                  <button
+                    onClick={() => {
+                      if (tool_link) {
+                        window.open(tool_link, "_blank", "noopener,noreferrer");
+                      }
+                    }}
+                    className={`text-center text-sm font-medium ${
+                      tool_link
+                        ? "text-blue-600 hover:text-blue-800 hover:underline cursor-pointer transition-colors duration-200"
+                        : "text-gray-600 cursor-default"
+                    }`}
+                    title={
+                      tool_link
+                        ? `Visit ${tool_name} website`
+                        : "Link not available"
+                    }
+                    disabled={!tool_link}
+                  >
+                    {tool_name}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">
+            Course Contents (Syllabus)
+          </h2>
+          <div className="grid md:grid-cols-2 gap-7">
+            {course.contents?.map(({ id, title, description }) => (
+              <div key={id} className="border bg-white p-5 rounded-lg shadow">
+                <h3 className="font-bold text-lg mb-2">{title}</h3>
+                <p className="text-base">{description}</p>
+              </div>
+            ))}
+          </div>
+          {course.syllabus_file && (
+            <a
+              href={course.syllabus_file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-6 px-6 py-3 bg-orange-500 text-white rounded font-semibold shadow hover:bg-orange-600 transition"
+            >
+              Download Syllabus PDF
+            </a>
+          )}
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">
+            Labs & Practical Exercises
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {course.labs?.map(({ id, title, description }) => (
+              <div key={id} className="bg-white p-4 rounded-lg shadow">
+                <h3 className="font-semibold text-lg mb-2">{title}</h3>
+                <p>{description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {course.faqs?.map(({ id, question, answer }) => (
+              <details
+                key={id}
+                className="bg-white rounded-lg p-4 shadow cursor-pointer"
+              >
+                <summary className="font-semibold text-base">
+                  {question}
+                </summary>
+                <p className="mt-2">{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+            {/* Certificate Section with White Background */}
         <section className="mb-12 bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -694,104 +824,6 @@ export default function CourseDetailPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="mb-12 grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Skills You Will Learn</h2>
-            <ul className="list-disc ml-6 text-base space-y-1">
-              {course.skills?.map(({ id, skill_name }) => (
-                <li key={id}>{skill_name}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Global Certification</h2>
-            <div className="flex flex-wrap gap-7">
-              {course.tools?.map(({ id, tool_name, tool_link }) => (
-                <div key={id} className="flex flex-col items-center w-24">
-                  {/* Clickable Tool Name that redirects to tool_link */}
-                  <button
-                    onClick={() => {
-                      if (tool_link) {
-                        window.open(tool_link, "_blank", "noopener,noreferrer");
-                      }
-                    }}
-                    className={`text-center text-sm font-medium ${
-                      tool_link
-                        ? "text-blue-600 hover:text-blue-800 hover:underline cursor-pointer transition-colors duration-200"
-                        : "text-gray-600 cursor-default"
-                    }`}
-                    title={
-                      tool_link
-                        ? `Visit ${tool_name} website`
-                        : "Link not available"
-                    }
-                    disabled={!tool_link}
-                  >
-                    {tool_name}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            Course Contents (Syllabus)
-          </h2>
-          <div className="grid md:grid-cols-2 gap-7">
-            {course.contents?.map(({ id, title, description }) => (
-              <div key={id} className="border bg-white p-5 rounded-lg shadow">
-                <h3 className="font-bold text-lg mb-2">{title}</h3>
-                <p className="text-base">{description}</p>
-              </div>
-            ))}
-          </div>
-          {course.syllabus_file && (
-            <a
-              href={course.syllabus_file}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-6 px-6 py-3 bg-orange-500 text-white rounded font-semibold shadow hover:bg-orange-600 transition"
-            >
-              Download Syllabus PDF
-            </a>
-          )}
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">
-            Labs & Practical Exercises
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {course.labs?.map(({ id, title, description }) => (
-              <div key={id} className="bg-white p-4 rounded-lg shadow">
-                <h3 className="font-semibold text-lg mb-2">{title}</h3>
-                <p>{description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-3">
-            {course.faqs?.map(({ id, question, answer }) => (
-              <details
-                key={id}
-                className="bg-white rounded-lg p-4 shadow cursor-pointer"
-              >
-                <summary className="font-semibold text-base">
-                  {question}
-                </summary>
-                <p className="mt-2">{answer}</p>
-              </details>
-            ))}
           </div>
         </section>
       </main>

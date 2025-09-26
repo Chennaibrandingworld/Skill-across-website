@@ -45,7 +45,7 @@ const HomePage = () => {
   }, [nextSlide]);
 
   return (
-    <div className="bg-gradient-to-r from-red-100 via-red-200 to-red-300">
+    <div className="bg-white">
       <Header />
 
       <BannerCarousel />
@@ -53,63 +53,60 @@ const HomePage = () => {
 
       <Domains />
 
-      <div className="bg-gradient-to-tr from-red-600 via-red-500 to-red-700 max-w-7xl mx-auto px-6 md:px-20 py-16 flex flex-col md:flex-row gap-12">
-        {/* About Left */}
-        <div className="md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-4xl font-bold mb-8 text-white">About Us</h2>
-          <h3 className="text-2xl font-semibold mb-4 text-white">
-            PCS Private Limited &amp; SkillAcross
-          </h3>
+{/* About Section */}
+<div className="bg-gradient-to-tr from-red-600 via-red-500 to-red-700 max-w-7xl mx-auto px-6 md:px-20 py-16 flex flex-col md:flex-row gap-12 mt-16 rounded-xl shadow-lg">
+  {/* About Left */}
+  <div className="md:w-2/3 flex flex-col justify-center">
+    <h2 className="text-4xl font-bold mb-6 text-white">About Us</h2>
+    <h3 className="text-2xl font-semibold mb-4 text-white">
+      PCS Private Limited &amp; SkillAcross
+    </h3>
 
-          <p className="text-red-100 leading-relaxed">
-            For over 25 years, PCS Private Limited has been a trusted leader in
-            training and placements, running successful franchise partnerships
-            in CAD, software training, abroad studies, and language learning.
-          </p>
+    <p className="text-red-100 leading-relaxed">
+      For over 25 years, PCS Private Limited has been a trusted leader in
+      training and placements, running successful franchise partnerships in CAD,
+      software training, abroad studies, and language learning.
+    </p>
 
-          <p className="text-red-100 leading-relaxed mt-4">
-            Building on this strong foundation, we are proud to launch our own
-            brand – <span className="font-semibold">SkillAcross</span> –
-            dedicated to empowering learners with future-ready skills.
-          </p>
+    <p className="text-red-100 leading-relaxed mt-4">
+      Building on this strong foundation, we are proud to launch our own brand –{" "}
+      <span className="font-semibold">SkillAcross</span> – dedicated to
+      empowering learners with future-ready skills.
+    </p>
 
-          <p className="text-red-100 leading-relaxed mt-4">
-            <span className="font-semibold">SkillAcross</span> offers programs
-            across:
-          </p>
+    <p className="text-red-100 leading-relaxed mt-4">
+      <span className="font-semibold">SkillAcross</span> offers programs across:
+    </p>
 
-          <ul className="list-disc list-inside text-red-100 leading-relaxed mt-2 space-y-1">
-            <li>
-              <span className="font-semibold">
-                Engineering &amp; Technology:
-              </span>{" "}
-              Mechanical, Civil, Architecture, Automobile, Aeronautical,
-              Software, IT, Cloud, Cybersecurity, and Artificial Intelligence.
-            </li>
-            <li>
-              <span className="font-semibold">
-                Languages &amp; Communication:
-              </span>{" "}
-              English and German.
-            </li>
-            <li>
-              <span className="font-semibold">Professional Growth:</span>{" "}
-              Management and career development.
-            </li>
-          </ul>
+    <ul className="list-disc list-inside text-red-100 leading-relaxed mt-2 space-y-2">
+      <li>
+        <span className="font-semibold">Engineering &amp; Technology:</span>{" "}
+        Mechanical, Civil, Architecture, Automobile, Aeronautical, Software, IT,
+        Cloud, Cybersecurity, and Artificial Intelligence.
+      </li>
+      <li>
+        <span className="font-semibold">Languages &amp; Communication:</span>{" "}
+        English and German.
+      </li>
+      <li>
+        <span className="font-semibold">Professional Growth:</span> Management
+        and career development.
+      </li>
+    </ul>
 
-          <p className="text-red-100 leading-relaxed mt-4">
-            With <span className="font-semibold">SkillAcross</span>, our mission
-            is to create a world-class skilling ecosystem that helps learners
-            build expertise, gain global exposure, and achieve career success.
-          </p>
-        </div>
+    <p className="text-red-100 leading-relaxed mt-4">
+      With <span className="font-semibold">SkillAcross</span>, our mission is to
+      create a world-class skilling ecosystem that helps learners build
+      expertise, gain global exposure, and achieve career success.
+    </p>
+  </div>
 
-        {/* Quick Enquiry Right */}
-        <div className="md:w-1/3">
-          <QuickEnquiry />
-        </div>
-      </div>
+  {/* Quick Enquiry Right */}
+  <div className="md:w-1/3">
+    <QuickEnquiry />
+  </div>
+</div>
+
 
       {/* Impact & Reach Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-20 py-16">
@@ -288,6 +285,8 @@ const HomePage = () => {
             </h3>
             <ul className="list-disc list-inside space-y-2">
               <li>World-class training programs at competitive fees.</li>
+              <li> Fee range Rs.5,000/- to Rs.1,00,000/- at Affordable Learning</li>
+            
             </ul>
           </div>
 
@@ -306,6 +305,7 @@ const HomePage = () => {
         </div>
       </section>
       <AbroadStudy />
+      {/* <PolicyPage/> */}
 
       <TestimonialsSection />
       <Expert />

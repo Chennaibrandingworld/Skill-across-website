@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Header } from "../components/Header";
 import { Expert } from "../components/expert";
 import { Footer } from "../components/Footer";
-import LogoSlider from "../components/logo_slider";
 import TestimonialsSection from "../components/testimonial_section";
 
 // Define TypeScript interfaces
@@ -235,7 +234,7 @@ export default function Page() {
       {/* Testimonials Section */}
       <TestimonialsSection />
 
-      <LogoSlider />
+     
       <Expert />
       <Footer />
     </div>
